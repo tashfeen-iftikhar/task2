@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #2C3E50; 
+        }
+        #div2 {
+            background-color: #34495E; 
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+        }
+        #input {
+            border-radius: 10px;
+            height: 50px;
+            background-color: #1C2833; 
+            color: #fff;
+            font-size: 28px;
+            text-align: right;
+            border: none;
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 339px; 
+        }
+        .btnn {
+            background-color: #7F8C8D; 
+            color: #fff;
+            border-radius: 10px;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            margin: 10px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btnn:hover {
+            background-color: #95A5A6; 
+        }
+        #reset {
+            background-color: #E74C3C; 
+            width: 130px;
+        }
+        #reset:hover {
+            background-color: #C0392B; 
+        }
+        #equals {
+            background-color: #2ECC71; 
+            width: 130px;
+        }
+        #equals:hover {
+            background-color: #27AE60; 
+        }
+        .button-row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        #div1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1">
+        <form>
+            <div>
+                <input id="input" type="text" readonly>
+                <br>
+                <div id="div2">
+                  
+                    <div class="button-row">
+                        <input type="button" value="7" class="btnn" id="seven">
+                        <input type="button" value="8" class="btnn" id="eight">
+                        <input type="button" value="9" class="btnn" id="nine">
+                        <input type="button" value="DE" class="btnn" id="delete" onclick="Delete()">
+                    </div>
+
+                        <div class="button-row">
+                        <input type="button" value="4" class="btnn" id="four">
+                        <input type="button" value="5" class="btnn" id="five">
+                        <input type="button" value="6" class="btnn" id="six">
+                        <input type="button" value="+" class="btnn" id="plus">
+                    </div>
+
+                    <div class="button-row">
+                        <input type="button" value="1" class="btnn" id="one">
+                        <input type="button" value="2" class="btnn" id="two">
+                        <input type="button" value="3" class="btnn" id="three">
+                        <input type="button" value="-" class="btnn" id="minus">
+                    </div>
+                    
+                    <div class="button-row">
+                        <input type="button" value="." class="btnn" id="dot">
+                        <input type="button" value="0" class="btnn" id="zero">
+                        <input type="button" value="/" class="btnn" id="divide">
+                        <input type="button" value="x" class="btnn" id="multiply">
+                    </div>
+                    
+                    <div class="button-row">
+                        <button type="reset" class="btnn" id="reset" onclick="Reset()">Reset</button>
+                        <button type="button" class="btnn" id="equals" onclick="output()">=</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function Delete() {
+            let b = inputfield.value;
+            inputfield.value = b.slice(0, -1);
+        }
+
+        function output() {
+            inputfield.value = eval(inputfield.value);
+        }
+
+        function Reset() {
+            inputfield.value = "";
+        }
+
+        let a = document.querySelectorAll(".btnn");
+        let inputfield = document.getElementById("input");
+
+        a.forEach(btnn => {
+            btnn.addEventListener("click", function () {
+                if (btnn.id === "nine") {
+                    let write = "9";
+                    inputfield.value += write;
+                } else if (btnn.id === "eight") {
+                    let write = "8";
+                    inputfield.value += write;
+                } else if (btnn.id === "seven") {
+                    let write = "7";
+                    inputfield.value += write;
+                } else if (btnn.id === "six") {
+                    let write = "6";
+                    inputfield.value += write;
+                } else if (btnn.id === "five") {
+                    let write = "5";
+                    inputfield.value += write;
+                } else if (btnn.id === "four") {
+                    let write = "4";
+                    inputfield.value += write;
+                } else if (btnn.id === "three") {
+                    let write = "3";
+                    inputfield.value += write;
+                } else if (btnn.id === "two") {
+                    let write = "2";
+                    inputfield.value += write;
+                } else if (btnn.id === "one") {
+                    let write = "1";
+                    inputfield.value += write;
+                } else if (btnn.id === "zero") {
+                    let write = "0";
+                    inputfield.value += write;
+                } else if (btnn.id === "plus") {
+                    let write1 = "+";
+                    inputfield.value += write1;
+                } else if (btnn.id === "minus") {
+                    let write1 = "-";
+                    inputfield.value += write1;
+                } else if (btnn.id === "multiply") {
+                    let write1 = "*";
+                    inputfield.value += write1;
+                } else if (btnn.id === "divide") {
+                    let write1 = "/";
+                    inputfield.value += write1;
+                } else if (btnn.id === "dot") {
+                    let write1 = ".";
+                    inputfield.value += write1;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
